@@ -1,6 +1,4 @@
 .mainbar{
-    /* background: pink;     */
-    /* width: 100%; */
     width: 75%;
     height: 100vh;
     display: flex;
@@ -23,10 +21,10 @@
     margin-left: 15px;
     background: transparent;
     border-radius: 5px;
-    border-width: 1px;
+    border: 1px solid rgb(173, 171, 171);
     width: 35px;
     height: 35px;
-    border-color: rgb(173, 171, 171);
+    cursor: pointer;
 }
 
 .line{
