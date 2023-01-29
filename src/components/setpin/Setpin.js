@@ -1,20 +1,39 @@
-import React from 'react'
+import axios from 'axios'
+import React, { useState } from 'react'
 import styles from './Setpin.module.css'
 
-const Setpin = () => {
+const Setpin = (props) => {
+  const [newpass, setnewpass] = useState("")
+  const [confirmpass, setconfirmpass] = useState("")
+  const [same, setsame] = useState(false)
+  console.log(newpass);
+
+  async function submithandler(){
+    if(newpass === confirmpass){
+      setsame(false)
+      const url = `http://localhost:3000/api/admin/setPin/${newpass}`
+      axios.post(url)
+      props.pins(1)
+    }
+    else{
+      setsame(true)
+    }
+  }
+
   return (
     <div className={styles.setPinContainer}>
       <div className={styles.setpin}>
         <p className={styles.header}>Set Pin</p>
         <div>
           <p className={styles.info}>Enter New Pin</p>
-          <input className={styles.input} type="password" name="" id="" maxLength={4}/>
+          <input onChange={(e)=>setnewpass(e.target.value)} className={styles.input} type="password" name="" id="" maxLength={4}/>
         </div>
         <div>
           <p className={styles.info}>Confirm New Pin</p>
-          <input className={styles.input} type="password" name="" id="" maxLength={4}/>
+          <input onChange={(e)=>setconfirmpass(e.target.value)} className={styles.input} type="password" name="" id="" maxLength={4}/>
+          {same && <p className={styles.error}>* Enter same PIN</p> }
         </div>
-        <button className={styles.btn}>Save Changes</button>
+        <button onClick={submithandler} className={styles.btn}>Save Changes</button>
       </div>
     </div>
     

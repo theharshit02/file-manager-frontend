@@ -63,3 +63,12 @@
     bottom: 0;
     background: rgba(30, 39, 46, 0.9);
   }
+
+  .error{
+    font-size: 14px;
+    font-family: 'DM Sans', sans-serif;
+    color: red;
+    font-style: italic;
+    margin-top: 5px;
+    margin-bottom: 0px;
+}

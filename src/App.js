@@ -8,17 +8,29 @@ import { useEffect, useState } from 'react';
 
 function App() {
   
-  const [status, setstatus] = useState()
+  const [pin, setpin] = useState("1")
+  const [lock, setlock] = useState("1")  
 
   async function callLock(){
-    const url = "http://localhost:3000/api/admin/check"
+    const url = "http://localhost:3000/api/admin/status"
     const result = await axios.get(url)
     if (result.data === 0){
-      setstatus("0")
+      setpin("0")
+    }
+    else{
+      setlock("0")
     }
   }
 
-  console.log("status", status);
+  function change(e){
+    setpin(e)
+  }
+
+  function check(e){
+    setlock(e)
+  }
+
+  console.log("status", pin);
 
   useEffect(()=>{
     callLock()
@@ -30,7 +42,8 @@ function App() {
         <Sidebar/>
         <Mainbar/>
       </div>
-      {status === "0"?<Setpin/>:<Lock/>}
+      {pin === "0"?<Setpin pins={change}/>:<></>}
+      {lock === "0"?<Lock check={check}/>:<></>}
     </div>
   );
 }
