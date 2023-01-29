@@ -11,8 +11,11 @@ const Lock = (props) => {
   const [err, seterr] = useState(false)
 
   useEffect(()=>{
-    document.body.style.overflowY = "hidden";
-  })
+    document.body.style.overflowY="hidden"
+    return()=>{
+      document.body.style.overflowY="scroll"
+    }
+  },[])
 
   async function submithandler(){
     const pass = pin1+pin2+pin3+pin4

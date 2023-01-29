@@ -1,5 +1,5 @@
 import axios from 'axios'
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import styles from './Setpin.module.css'
 
 const Setpin = (props) => {
@@ -19,6 +19,13 @@ const Setpin = (props) => {
       setsame(true)
     }
   }
+
+  useEffect(()=>{
+    document.body.style.overflowY="hidden"
+    return()=>{
+      document.body.style.overflowY="scroll"
+    }
+  },[])
 
   return (
     <div className={styles.setPinContainer}>

@@ -34,7 +34,7 @@
 
 .lock{
     position: relative;
-    top: 570px;
+    top: 150px;
     width: 281px;
     height: 44px;
     background: #445EE2;
@@ -60,4 +60,14 @@
 .icon{
     pointer-events: none;
     margin-right: 3px;
+}
+
+.folders{
+    position: relative;
+    top: 110px;
+    width: 250px;
+    height: 400px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
