@@ -29,8 +29,8 @@
 
 .line{
     position: relative;
-    top: 90px;
-    width: 700px;
+    top: 60px;
+    width: 90%;
     height: 1px;
     background: #EBF0F5;
 }
