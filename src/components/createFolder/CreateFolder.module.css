@@ -66,13 +66,9 @@
     cursor: pointer;
     margin-top: 20px;
     margin-bottom: 20px;
+    border: 0px;
 }
 
-.error{
-    font-size: 14px;
-    font-family: 'DM Sans', sans-serif;
-    color: red;
-    font-style: italic;
-    margin-top: 5px;
-    margin-bottom: 0px;
+.btn:hover{
+    background: #394eba;
 }

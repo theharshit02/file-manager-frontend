@@ -1,4 +1,4 @@
-.setPinContainer{
+.fileContainer{
     position: fixed;
     display: flex;
     justify-content: center;
@@ -8,12 +8,12 @@
     right: 0;
     bottom: 0;
     background: rgba(30, 39, 46, 0.9);
-    /* overflow-y: hidden; */
+    overflow-y: hidden;
 }
 
-.setpin{
+.file{
     width: 400px;
-    height: 400px;
+    height: 300px;
     background: #FFFFFF;
     border: 1px solid #C8D6E5;
     border-radius: 10px;
@@ -47,7 +47,7 @@
     height: 44px;
     border: 1px solid #EBF0F5;
     border-radius: 5px;
-    font-size: 28px;
+    font-size: 22px;
     padding-left: 20px;
 }
 
@@ -71,13 +71,4 @@
 
 .btn:hover{
     background: #394eba;
-}
-
-.error{
-    font-size: 14px;
-    font-family: 'DM Sans', sans-serif;
-    color: red;
-    font-style: italic;
-    margin-top: 5px;
-    margin-bottom: 0px;
 }

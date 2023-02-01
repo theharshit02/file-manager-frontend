@@ -10,11 +10,22 @@ const Sidebar = (props) => {
 
   const [folders, setfolders ] = useState([])
   const [active, setactive] = useState()
+  const [err, seterr] = useState(false)
 
-  // console.log(typeof(active));
+  console.log(active);
 
-  function clickhandler(){
+  function folderhandler(){
     props.fldrstatus("0")
+  }
+
+  function filehandler(){
+    if(active === undefined){
+      seterr(true)
+    }
+    else{
+      props.filestatus("0")
+      seterr(false)
+    }
   }
 
   async function listfolder(){
@@ -44,9 +55,10 @@ const Sidebar = (props) => {
     <div className={styles.sidebar}>
       <img className={styles.logo} src="logo.png" alt="Logo"/>
       <div className={styles.buttons}>
-        <button className={styles.btn}><NoteAddIcon className={styles.icon}/>Add File</button>
-        <button onClick={clickhandler} className={styles.btn}><CreateNewFolderIcon className={styles.icon}/>Add Folder</button>
+        <button onClick={filehandler} className={styles.btn}><NoteAddIcon className={styles.icon}/>Add File</button>
+        <button onClick={folderhandler} className={styles.btn}><CreateNewFolderIcon className={styles.icon}/>Add Folder</button>
       </div>
+      {err && <p className={styles.error}>Select a folder first please!</p>}
       <div className={styles.folders}>
         {folders.map((list, index)=>(
           //eslint-disable-next-line
