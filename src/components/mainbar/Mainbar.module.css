@@ -27,10 +27,27 @@
     cursor: pointer;
 }
 
+.btn:hover{
+    background: #dadada;
+}
+
 .line{
     position: relative;
-    top: 60px;
+    top: 1px;
     width: 90%;
     height: 1px;
     background: #EBF0F5;
+    margin-top: 5px;
+}
+
+.breadcrumb{
+    position: relative;
+    width: 90%;
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 28px;
+    letter-spacing: 0.02em;
+    color: #566474;
+
 }

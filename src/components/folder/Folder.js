@@ -1,12 +1,22 @@
-import React from 'react'
+import React, { useState } from 'react'
 import styles from './Folder.module.css'
-import FolderIcon from '@mui/icons-material/Folder';
 
 const Folder = (props) => {
+
+  const [select, setselect] = useState()
+  const [id, setid] = useState()
+  
+
+  function handleselect(e){
+    setselect(e.target.innerText)
+    setid(e.target.id)
+    console.log(e.target.id);
+    props.select(select)
+    props.slctid(id)
+  }
+
   return (
-    <div className={styles.folder}>
-      <p className={styles.name}><FolderIcon className={styles.icon}/>{props.name}</p>
-    </div>
+    <button onClick={handleselect} id={props.id} className={styles.btn} style={{background:`${props.style}`}}><img className={styles.icon} src="folderIcon.png" alt=""/>{props.name}</button>
   )
 }
 

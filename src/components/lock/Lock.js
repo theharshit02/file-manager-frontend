@@ -24,10 +24,12 @@ const Lock = (props) => {
     if(x.data === 0){
       props.check("1")
       seterr(false)
+      localStorage.setItem("status", "active")
     }
     else{
       seterr(true)
     }
+    
   }
 
   return (

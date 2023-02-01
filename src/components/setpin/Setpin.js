@@ -14,6 +14,7 @@ const Setpin = (props) => {
       const url = `http://localhost:3000/api/admin/setPin/${newpass}`
       axios.post(url)
       props.pins(1)
+      localStorage.setItem("status", "active")
     }
     else{
       setsame(true)

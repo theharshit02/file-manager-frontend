@@ -50,6 +50,11 @@
     letter-spacing: 0.02em;
     color: #FFFFFF;
     cursor: pointer;
+    border: 0px;
+}
+
+.btn:hover{
+    background: #394eba;
 }
 
 .lockContainer{

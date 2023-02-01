@@ -12,6 +12,8 @@ function App() {
   const [pin, setpin] = useState("1")
   const [lock, setlock] = useState("1")
   const [fldr, setfldr] = useState("1")
+  const [select, setselect] = useState("")
+  console.log(select);
 
   async function callLock(){
     const url = "http://localhost:3000/api/admin/status"
@@ -40,15 +42,22 @@ function App() {
     setfldr(e)
   }
 
+  function handleselect(e){
+    setselect(e)
+  }
+
+  console.log( localStorage.getItem("status") );
   useEffect(()=>{
-    callLock()
+    if(localStorage.getItem("status")!=="active"){
+      callLock()
+    } 
   },[])
 
   return (
     <div className="App">
       <div className="bars">
-        <Sidebar fldrstatus={fldrstatus}/>
-        <Mainbar/>
+        <Sidebar logout={check} select={handleselect} fldrstatus={fldrstatus}/>
+        <Mainbar newpin={change} logout={check} select={select}/>
       </div>
       {pin === "0"?<Setpin pins={change}/>:<></>}
       {lock === "0"?<Lock check={check}/>:<></>}

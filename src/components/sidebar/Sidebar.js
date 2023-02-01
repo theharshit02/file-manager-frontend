@@ -9,6 +9,9 @@ import axios from 'axios';
 const Sidebar = (props) => {
 
   const [folders, setfolders ] = useState([])
+  const [active, setactive] = useState()
+
+  // console.log(typeof(active));
 
   function clickhandler(){
     props.fldrstatus("0")
@@ -18,6 +21,19 @@ const Sidebar = (props) => {
     const url = `http://localhost:3000/api/admin/listFolder`
     const result = await axios.get(url)
     setfolders(result.data)
+  }
+
+  function handleselected(e){
+    props.select(e)
+  }
+
+  function handleactive(e){
+    setactive(e)
+  }
+
+  function handleLockBtn(){
+    props.logout("0")
+    localStorage.setItem("status", "inactive")
   }
 
   useEffect(()=>{
@@ -32,11 +48,12 @@ const Sidebar = (props) => {
         <button onClick={clickhandler} className={styles.btn}><CreateNewFolderIcon className={styles.icon}/>Add Folder</button>
       </div>
       <div className={styles.folders}>
-        {folders.map((list)=>(
-          <Folder name={list.name}/>
+        {folders.map((list, index)=>(
+          //eslint-disable-next-line
+          <Folder id={index} select={handleselected} style={active==index?"#cfd4da":"#EBF0F5"} slctid={handleactive} name={list.name}/>
         ))}
       </div>
-      <button className={styles.lock}><LockIcon className={styles.icon}/>Lock now</button>
+      <button onClick={handleLockBtn} className={styles.lock}><LockIcon className={styles.icon}/>Lock now</button>
     </div>
   )
 }
