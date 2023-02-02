@@ -5,6 +5,8 @@ import Lock from './components/lock/Lock';
 import Setpin from './components/setpin/Setpin';
 import CreateFolder from './components/createFolder/CreateFolder';
 import CreateFile from './components/CreateFile/CreateFile';
+import CreateFileCont from './components/CreateFileCont/CreateFileCont';
+import EditFileCont from './components/EditFileCont/EditFileCont';
 import axios from 'axios';
 import { useEffect, useState } from 'react';
 
@@ -15,7 +17,11 @@ function App() {
   const [fldr, setfldr] = useState("1")
   const [newfile, setnewfile] = useState("1")
   const [select, setselect] = useState("")
-  console.log(select);
+  const [fname, setfname] = useState("")
+  const [editfname, seteditfname] = useState("")
+  const [filecontents, setfilecontents] = useState("")
+  const [edit, setedit] = useState("1")
+  const [editid, seteditid] = useState()
 
   async function callLock(){
     const url = "http://localhost:3000/api/admin/status"
@@ -48,7 +54,7 @@ function App() {
     setfldr(e)
   }
 
-  function rmfile(e){
+  function contfile(e){
     setnewfile(e)
   }
 
@@ -56,7 +62,10 @@ function App() {
     setselect(e)
   }
 
-  console.log( localStorage.getItem("status") );
+  function filename(e){
+    setfname(e)
+  }
+
   useEffect(()=>{
     if(localStorage.getItem("status")!=="active"){
       callLock()
@@ -67,12 +76,13 @@ function App() {
     <div className="App">
       <div className="bars">
         <Sidebar logout={check} select={handleselect} filestatus={filestatus} fldrstatus={fldrstatus}/>
-        <Mainbar newpin={change} logout={check} select={select}/>
+        <Mainbar fname={(e)=>{seteditfname(e)}} filecontents={(e)=>{setfilecontents(e)}} isslct={(e)=>{setedit(e)}} id={(e)=>seteditid(e)} newpin={change} logout={check} select={select}/>
       </div>
       {pin === "0"?<Setpin pins={change}/>:<></>}
       {lock === "0"?<Lock check={check}/>:<></>}
       {fldr === "0"?<CreateFolder rmfldr={rmfldr}/>:<></>}
-      {newfile === "0"?<CreateFile rmfile={rmfile}/>:<></>}
+      {newfile === "0"?<CreateFile filename={filename} contfile={contfile}/>:newfile==="2"?<CreateFileCont foldname={select} filename={fname} contfile={contfile}/>:<></>}
+      {edit === "0"?<EditFileCont id={editid} closefile={(e)=>{setedit(e)}} fname={editfname} foldname={select} filecontents={filecontents}/>:<></>}
     </div>
   );
 }

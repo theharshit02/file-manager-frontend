@@ -12,8 +12,6 @@ const Sidebar = (props) => {
   const [active, setactive] = useState()
   const [err, seterr] = useState(false)
 
-  console.log(active);
-
   function folderhandler(){
     props.fldrstatus("0")
   }

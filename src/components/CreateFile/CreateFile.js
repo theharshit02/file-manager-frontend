@@ -4,8 +4,10 @@ import styles from './CreateFile.module.css'
 const CreateFile = (props) => {
     const [filename, setfilename] = useState("")
     function submithandler(){
-        props.rmfile("1")
+        props.contfile("2")
+        props.filename(filename)
     }
+    console.log(filename);
   return (
     <div className={styles.fileContainer}>
       <div className={styles.file}>

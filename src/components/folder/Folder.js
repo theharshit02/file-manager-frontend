@@ -10,7 +10,6 @@ const Folder = (props) => {
   function handleselect(e){
     setselect(e.target.innerText)
     setid(e.target.id)
-    console.log(e.target.id);
     props.select(select)
     props.slctid(id)
   }

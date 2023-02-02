@@ -1,0 +1,66 @@
+.editContainer{
+    position: fixed;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(30, 39, 46, 0.9);
+    overflow-y: hidden;
+}
+
+.edit{
+    width: 520px;
+    height: 600px;
+    background: #FFFFFF;
+    border: 1px solid #C8D6E5;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.header{
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 700;
+    font-size: 20px;
+    line-height: 28px;
+    letter-spacing: 0.02em;
+    color: #1E272E;
+}
+
+.input{
+    width: 360px;
+    height: 390px;
+    border: 2px solid #EBF0F5;
+    border-radius: 5px;
+    font-size: 20px;
+    padding: 20px;
+    overflow-y: auto;
+    resize: none;
+}
+
+.btn{
+    width: 160px;
+    height: 44px;
+    background: #142683;
+    border-radius: 5px;
+    font-family: 'DM Sans';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 28px;
+    letter-spacing: 0.02em;
+    color: #FFFFFF;
+    cursor: pointer;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    border: 0px;
+}
+
+.btn:hover{
+    background: #394eba;
+}

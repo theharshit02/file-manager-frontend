@@ -1,0 +1,29 @@
+.logo{
+    position: relative;
+    width: 75px;
+    height: 135px;
+    margin-right: 40px; 
+    display: flex; 
+    flex-direction: column;
+    align-items: center;  
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 400;
+    font-size: 15px;
+    line-height: 28px;
+    letter-spacing: 0.02em;
+    color: #1E272E;
+    user-select: none;
+}
+
+.name{
+    margin-top: 5px;
+    pointer-events: none;
+}
+
+img{
+    pointer-events: none;
+}
+
+.edtfile{
+    position: fixed;
+}
