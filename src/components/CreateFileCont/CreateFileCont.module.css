@@ -23,7 +23,7 @@
     align-items: center;
 }
 
-.header{
+.headertext{
     font-family: 'DM Sans', sans-serif;
     font-weight: 700;
     font-size: 20px;
@@ -63,4 +63,20 @@
 
 .btn:hover{
     background: #394eba;
+}
+
+.header{
+    width: 400px;
+    display: flex;
+    justify-content: space-between;
+}
+.status{
+    font-family: 'DM Sans', sans-serif;
+    /* font-weight: 700; */
+    font-size: 14px;
+    line-height: 28px;
+    letter-spacing: 0.02em;
+    color: #97989a;
+    display: flex;
+    align-items: center;
 }

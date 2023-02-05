@@ -23,7 +23,7 @@ const Mainbar = (props) => {
       setsavedfiles(result.data[0].files)
     }
     files()
-  })
+  },[props.select])
 
   return (
     <div className={styles.mainbar}>

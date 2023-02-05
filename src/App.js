@@ -9,6 +9,7 @@ import CreateFileCont from './components/CreateFileCont/CreateFileCont';
 import EditFileCont from './components/EditFileCont/EditFileCont';
 import axios from 'axios';
 import { useEffect, useState } from 'react';
+import {listfolder} from './components/Api/api'
 
 function App() {
   
@@ -22,6 +23,8 @@ function App() {
   const [filecontents, setfilecontents] = useState("")
   const [edit, setedit] = useState("1")
   const [editid, seteditid] = useState()
+
+  console.log(select)
 
   async function callLock(){
     const url = "http://localhost:3000/api/admin/status"
@@ -52,6 +55,7 @@ function App() {
 
   function rmfldr(e){
     setfldr(e)
+    listfolder()
   }
 
   function contfile(e){
@@ -81,7 +85,7 @@ function App() {
       {pin === "0"?<Setpin pins={change}/>:<></>}
       {lock === "0"?<Lock check={check}/>:<></>}
       {fldr === "0"?<CreateFolder rmfldr={rmfldr}/>:<></>}
-      {newfile === "0"?<CreateFile filename={filename} contfile={contfile}/>:newfile==="2"?<CreateFileCont foldname={select} filename={fname} contfile={contfile}/>:<></>}
+      {newfile === "0"?<CreateFile filename={filename} foldname={select} contfile={contfile}/>:newfile==="2"?<CreateFileCont foldname={select} filename={fname} contfile={contfile}/>:<></>}
       {edit === "0"?<EditFileCont id={editid} closefile={(e)=>{setedit(e)}} fname={editfname} foldname={select} filecontents={filecontents}/>:<></>}
     </div>
   );

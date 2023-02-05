@@ -47,7 +47,7 @@ const Sidebar = (props) => {
 
   useEffect(()=>{
     listfolder()
-  })
+  },[])
 
   return (
     <div className={styles.sidebar}>
