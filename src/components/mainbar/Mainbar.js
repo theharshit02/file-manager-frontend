@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import styles from './Mainbar.module.css'
 import ShowFile from '../ShowFiles/ShowFile';
+import SearchBar from '../SearchBar/SearchBar';
 import axios from 'axios';
 import SettingsIcon from '@mui/icons-material/Settings';
 import LogoutIcon from '@mui/icons-material/Logout';
@@ -22,7 +23,7 @@ const Mainbar = (props) => {
       setsavedfiles(result.data[0].files)
     }
     files()
-  },[props.select])
+  })
 
   return (
     <div className={styles.mainbar}>
@@ -32,6 +33,10 @@ const Mainbar = (props) => {
                 <button onClick={handleLogOut} className={styles.btn}><LogoutIcon className={styles.icon}/></button>
             </div>
         </div>
+        <div className={styles.search}>
+          <SearchBar/>
+        </div>
+        
         <div className={styles.breadcrumb}>
           <p>{props.select} / {slctfile}</p> 
         </div>

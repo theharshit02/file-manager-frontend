@@ -13,6 +13,7 @@
     letter-spacing: 0.02em;
     color: #1E272E;
     user-select: none;
+    cursor: pointer;
 }
 
 .name{
