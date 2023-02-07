@@ -5,8 +5,6 @@ async function listfolder(){
     const result = await axios.get(url)
 
     return result.data
-    // console.log(result.data)
-    // setfolders(result.data)
   }
 
   export {listfolder}

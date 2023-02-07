@@ -9,7 +9,6 @@ import 'quill/dist/quill.snow.css';
 const CreateFileCont = (props) => {
     const [editfile, seteditfile] = useState("")
     const [status, setstatus] = useState("")
-    console.log(status)
 
     function handlechange(e){
       seteditfile(e)

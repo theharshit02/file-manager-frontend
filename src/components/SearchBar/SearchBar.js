@@ -7,8 +7,6 @@ const SearchBar = (props) => {
   const [keyword, setkeyword] = useState("")
   const [selected, setselected] = useState("")
 
-  console.log(selected)
-
   async function handlechange(e){
     setkeyword(e.target.value)
   }

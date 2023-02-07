@@ -25,8 +25,6 @@ function App() {
   const [editid, seteditid] = useState()
   const [reload, setreload] = useState(true)
 
-  console.log(editfname)
-
   async function callLock(){
     const url = "https://file-manager-backend-xymj.onrender.com/api/admin/status"
     const result = await axios.get(url)

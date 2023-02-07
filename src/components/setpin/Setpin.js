@@ -6,7 +6,6 @@ const Setpin = (props) => {
   const [newpass, setnewpass] = useState("")
   const [confirmpass, setconfirmpass] = useState("")
   const [same, setsame] = useState(false)
-  console.log(newpass);
 
   async function submithandler(){
     if(newpass === confirmpass){

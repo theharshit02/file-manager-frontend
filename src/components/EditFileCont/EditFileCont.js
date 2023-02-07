@@ -10,9 +10,6 @@ const EditFileCont = (props) => {
     const [editfile, seteditfile] = useState("")
     const [status, setstatus] = useState("")
 
-
-    // console.log(editfile)
-
     function handlechange(e){
       seteditfile(e)
       setstatus("...Saving")
@@ -35,7 +32,6 @@ const EditFileCont = (props) => {
         //   });
     }
 
-    console.log(editfile)
     function write(){
       const url=`https://file-manager-backend-xymj.onrender.com/api/admin/updateContent/${props.foldname}/${props.fname}/${editfile}`
       axios.post(url)
