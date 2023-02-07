@@ -11,7 +11,7 @@ const Setpin = (props) => {
   async function submithandler(){
     if(newpass === confirmpass){
       setsame(false)
-      const url = `http://localhost:3000/api/admin/setPin/${newpass}`
+      const url = `https://file-manager-backend-xymj.onrender.com/api/admin/setPin/${newpass}`
       axios.post(url)
       props.pins(1)
       localStorage.setItem("status", "active")

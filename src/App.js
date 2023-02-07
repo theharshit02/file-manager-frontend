@@ -23,11 +23,12 @@ function App() {
   const [filecontents, setfilecontents] = useState("")
   const [edit, setedit] = useState("1")
   const [editid, seteditid] = useState()
+  const [reload, setreload] = useState(true)
 
-  console.log(select)
+  console.log(editfname)
 
   async function callLock(){
-    const url = "http://localhost:3000/api/admin/status"
+    const url = "https://file-manager-backend-xymj.onrender.com/api/admin/status"
     const result = await axios.get(url)
     if (result.data === 0){
       setpin("0")
@@ -79,14 +80,14 @@ function App() {
   return (
     <div className="App">
       <div className="bars">
-        <Sidebar logout={check} select={handleselect} filestatus={filestatus} fldrstatus={fldrstatus}/>
-        <Mainbar fname={(e)=>{seteditfname(e)}} filecontents={(e)=>{setfilecontents(e)}} isslct={(e)=>{setedit(e)}} id={(e)=>seteditid(e)} newpin={change} logout={check} select={select}/>
+        <Sidebar logout={check} select={handleselect} filestatus={filestatus} reload={reload} fldrstatus={fldrstatus}/>
+        <Mainbar fname={(e)=>{seteditfname(e)}} filecontents={(e)=>{setfilecontents(e)}} isslct={(e)=>{setedit(e)}} id={(e)=>seteditid(e)} newpin={change} logout={check} select={select} reload={reload} srchfoldname={(e)=>handleselect(e)} srchfilename={(e)=>seteditfname(e)} />
       </div>
       {pin === "0"?<Setpin pins={change}/>:<></>}
       {lock === "0"?<Lock check={check}/>:<></>}
-      {fldr === "0"?<CreateFolder rmfldr={rmfldr}/>:<></>}
-      {newfile === "0"?<CreateFile filename={filename} foldname={select} contfile={contfile}/>:newfile==="2"?<CreateFileCont foldname={select} filename={fname} contfile={contfile}/>:<></>}
-      {edit === "0"?<EditFileCont id={editid} closefile={(e)=>{setedit(e)}} fname={editfname} foldname={select} filecontents={filecontents}/>:<></>}
+      {fldr === "0"?<CreateFolder reload={(e)=>setreload(!reload)} rmfldr={rmfldr}/>:<></>}
+      {newfile === "0"?<CreateFile filename={filename} foldname={select} contfile={contfile}/>:newfile==="2"?<CreateFileCont reload={(e)=>setreload(!reload)} foldname={select} filename={fname} contfile={contfile}/>:<></>}
+      {edit === "0"?<EditFileCont reload={(e)=>setreload(!reload)} id={editid} closefile={(e)=>{setedit(e)}} fname={editfname} foldname={select} filecontents={filecontents}/>:<></>}
     </div>
   );
 }

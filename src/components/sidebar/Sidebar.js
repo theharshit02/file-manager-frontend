@@ -11,6 +11,7 @@ const Sidebar = (props) => {
   const [folders, setfolders ] = useState([])
   const [active, setactive] = useState()
   const [err, seterr] = useState(false)
+  const reload = props.reload
 
   function folderhandler(){
     props.fldrstatus("0")
@@ -27,7 +28,7 @@ const Sidebar = (props) => {
   }
 
   async function listfolder(){
-    const url = `http://localhost:3000/api/admin/listFolder`
+    const url = `https://file-manager-backend-xymj.onrender.com/api/admin/listFolder`
     const result = await axios.get(url)
     setfolders(result.data)
   }
@@ -47,7 +48,7 @@ const Sidebar = (props) => {
 
   useEffect(()=>{
     listfolder()
-  },[])
+  },[reload])
 
   return (
     <div className={styles.sidebar}>

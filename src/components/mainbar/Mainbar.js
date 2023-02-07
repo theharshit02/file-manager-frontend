@@ -10,6 +10,17 @@ const Mainbar = (props) => {
 
   const [savedfiles, setsavedfiles] = useState([])
   const [slctfile, setslctfile] = useState("")
+  const [filecont, setfilecont] = useState("")
+  const select = props.select
+  const reload = props.reload
+
+  function handlefilecont(e){
+    setfilecont(e)
+  }
+
+  useEffect(()=>{
+    props.filecontents(filecont)
+  },[filecont])
 
   function handleLogOut(){
     props.logout("0")
@@ -18,12 +29,12 @@ const Mainbar = (props) => {
 
   useEffect(()=>{
     async function files(){
-      const url = `http://localhost:3000/api/admin/getFiles/${props.select}`
+      const url = `https://file-manager-backend-xymj.onrender.com/api/admin/getFiles/${props.select}`
       const result = await axios.get(url)
       setsavedfiles(result.data[0].files)
     }
     files()
-  },[props.select])
+  },[select, reload])
 
   return (
     <div className={styles.mainbar}>
@@ -34,7 +45,7 @@ const Mainbar = (props) => {
             </div>
         </div>
         <div className={styles.search}>
-          <SearchBar/>
+          <SearchBar foldname={(e)=>props.srchfoldname(e)} filename={(e)=>props.srchfilename(e)} isslct={(e)=>{props.isslct(e)}} filecontents={(e)=>props.filecontents(e)} />
         </div>
         
         <div className={styles.breadcrumb}>
@@ -43,7 +54,7 @@ const Mainbar = (props) => {
         <p className={styles.line}></p>
         <div className={styles.files}>
           {savedfiles.map((list, index)=>(
-            <ShowFile index={index} fname={(e)=>{props.fname(e)}} filecontents={(e)=>{props.filecontents(e)}} isslct={(e)=>{props.isslct(e)}} fileopen={(e)=>{setslctfile(e)}} filename={list.fname} content={list.fcontent}/>
+            <ShowFile index={index} fname={(e)=>{props.fname(e)}} filecontents={handlefilecont} isslct={(e)=>{props.isslct(e)}} fileopen={(e)=>{setslctfile(e)}} filename={list.fname} content={list.fcontent}/>
           ))}
         </div>
         

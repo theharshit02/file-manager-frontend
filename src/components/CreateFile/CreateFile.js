@@ -1,5 +1,5 @@
 import axios from 'axios'
-import React, { useEffect, useState } from 'react'
+import React, { useState } from 'react'
 import styles from './CreateFile.module.css'
 
 const CreateFile = (props) => {
@@ -7,7 +7,7 @@ const CreateFile = (props) => {
     function submithandler(){
         props.contfile("2")
         props.filename(filename)
-        const url = `http://localhost:3000/api/admin/file/${props.foldname}?fname=${filename}`
+        const url = `https://file-manager-backend-xymj.onrender.com/api/admin/file/${props.foldname}?fname=${filename}`
         axios.post(url)
     }
 

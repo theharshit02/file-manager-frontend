@@ -17,9 +17,31 @@ const Lock = (props) => {
     }
   },[])
 
+  function handlechange1(e){
+    setpin1(e.target.value)
+    const next = document.getElementById("2")
+    next.focus()
+  }
+
+  function handlechange2(e){
+    setpin2(e.target.value)
+    const next = document.getElementById("3")
+    next.focus()
+  }
+
+  function handlechange3(e){
+    setpin3(e.target.value)
+    const next = document.getElementById("4")
+    next.focus()
+  }
+
+  function handlechange4(e){
+    setpin4(e.target.value)
+  }
+
   async function submithandler(){
     const pass = pin1+pin2+pin3+pin4
-    const url = `http://localhost:3000/api/admin/checkPin/${pass}`
+    const url = `https://file-manager-backend-xymj.onrender.com/api/admin/checkPin/${pass}`
     const x = await axios.get(url)
     if(x.data === 0){
       props.check("1")
@@ -37,10 +59,10 @@ const Lock = (props) => {
       <div className={styles.lock}>
         <p className={styles.header} >Enter Account Pin</p>
         <div className={styles.inputPass}>
-          <input onChange={(e)=>{setpin1(e.target.value)}} className={styles.pass} type="password" maxLength={1}/>
-          <input onChange={(e)=>{setpin2(e.target.value)}} className={styles.pass} type="password" maxLength={1}/>
-          <input onChange={(e)=>{setpin3(e.target.value)}} className={styles.pass} type="password" maxLength={1}/>
-          <input onChange={(e)=>{setpin4(e.target.value)}} className={styles.pass} type="password" maxLength={1}/>
+          <input id="1" onChange={handlechange1} className={styles.pass} type="password" maxLength={1}/>
+          <input id="2" onChange={handlechange2} className={styles.pass} type="password" maxLength={1}/>
+          <input id="3" onChange={handlechange3} className={styles.pass} type="password" maxLength={1}/>
+          <input id="4" onChange={handlechange4} className={styles.pass} type="password" maxLength={1}/>
         </div>
         {err && <p className={styles.error}>* Wrong PIN</p>}
         <button onClick={submithandler} className={styles.btn}>Enter</button>

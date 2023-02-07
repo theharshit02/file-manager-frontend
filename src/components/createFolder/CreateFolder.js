@@ -7,9 +7,10 @@ const CreateFolder = (props) => {
   const [newfolder, setnewfolder] = useState("")
   
   function submithandler(){
-    const url = `http://localhost:3000/api/admin/folderName/${newfolder}`
+    const url = `https://file-manager-backend-xymj.onrender.com/api/admin/folderName/${newfolder}`
     axios.post(url)
     props.rmfldr("1")
+    props.reload()
   }
   return (
     <div className={styles.folderContainer}>
