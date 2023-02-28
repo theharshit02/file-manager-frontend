@@ -11,7 +11,7 @@ const EditFileCont = (props) => {
     const [status, setstatus] = useState("")
 
     function handlechange(e){
-      seteditfile(e)
+      seteditfile(e.target.value)
       setstatus("...Saving")
     }
     async function submithandler(){
@@ -47,25 +47,25 @@ const EditFileCont = (props) => {
     },[editfile])
 
 
-    const theme = 'snow';
-    const modules = {
-      toolbar: [
-        ['bold', 'italic', 'underline'],
-      ],
-    };
-    const formats = ['bold', 'italic', 'underline'];
+    // const theme = 'snow';
+    // const modules = {
+    //   toolbar: [
+    //     ['bold', 'italic', 'underline'],
+    //   ],
+    // };
+    // const formats = ['bold', 'italic', 'underline'];
   
-    const { quill, quillRef } = useQuill({theme, modules, formats});
-    useEffect(() => {
-      if (quill) {
-        quill.on('text-change', (delta, oldDelta, source) => {
-          handlechange(quill.getText())
-          const result = quill.getContents()
-          // console.log(quill.getContents())
-          // console.log(result.Delta.ops[0].attributes);
-        });
-      }
-    }, [quill]);
+    // const { quill, quillRef } = useQuill({theme, modules, formats});
+    // useEffect(() => {
+    //   if (quill) {
+    //     quill.on('text-change', (delta, oldDelta, source) => {
+    //       handlechange(quill.getText())
+    //       const result = quill.getContents()
+    //       // console.log(quill.getContents())
+    //       // console.log(result.Delta.ops[0].attributes);
+    //     });
+    //   }
+    // }, [quill]);
 
 
   return (
@@ -75,11 +75,9 @@ const EditFileCont = (props) => {
           <p className={styles.headertext}>Edit File</p>
           <p className={styles.status}>{status}</p>
         </div>
-        <div className={styles.input}>
-          {/* <textarea onChange={handlechange} placeholder="Type anything here..." className={styles.input} type="text" name="" id="">
-            {props.filecontents}
-          </textarea> */}
-          <div ref={quillRef}>{props.filecontents}</div>
+        <div>
+          <textarea onChange={handlechange} placeholder="Type anything here..." className={styles.input} defaultValue={props.filecontents} type="text" name="" id=""/>
+          {/* <div ref={quillRef}>{props.filecontents}</div> */}
         </div>
         <button onClick={submithandler} className={styles.btn}>Save File</button>
       </div>
